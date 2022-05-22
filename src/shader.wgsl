@@ -17,6 +17,7 @@ fn vs_main([[builtin(vertex_index)]] in_vertex_index: u32) -> VertexOutput
 
 // Frag
 [[stage(fragment)]]
-fn fs_main(in: VertexOutput) -> [[location(0)]] vec4<f32> {
-    return vec4<f32>(0.4, 0.3, 0.2, 1.0);
+fn fs_main([[builtin(position)]] coord: vec4<f32>) -> [[location(0)]] vec4<f32> {
+    let c = coord.xy / vec2<f32>(800.0, 600.0);
+    return vec4<f32>(c.xy, 0.0, 1.0);
 }
